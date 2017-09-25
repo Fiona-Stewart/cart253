@@ -50,6 +50,7 @@
 final int CIRCLE_SPEED = 3; //changed speed from 7 to 3
 // initial starting colour
 final color NO_CLICK_FILL_COLOR = color(255, 177, 98); // changed color to an orange tone
+// determines the colour of the circle when the mouse waves over it
 final color CLICK_FILL_COLOR = color(100, 100, 250);
 final color BACKGROUND_COLOR = color(178, 255, 250); // changed background to a blue but didnt use it
 final color STROKE_COLOR = color(250, 150, 150); // did not use stroke color but kept it as it did
