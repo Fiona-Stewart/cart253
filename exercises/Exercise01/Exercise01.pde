@@ -46,8 +46,9 @@
 //}
 
 // Commented excercise code
-
+// determines the speed the circle travels
 final int CIRCLE_SPEED = 3; //changed speed from 7 to 3
+// initial starting colour
 final color NO_CLICK_FILL_COLOR = color(255, 177, 98); // changed color to an orange tone
 final color CLICK_FILL_COLOR = color(100, 100, 250);
 final color BACKGROUND_COLOR = color(178, 255, 250); // changed background to a blue but didnt use it
