@@ -29,7 +29,7 @@ int ballVX;
 int ballVY;
 int ballSpeed = 4; //CHANGED decreased speed
 int ballSize = 80;
-color ballColor = color(255);
+color ballColor = color(HSB,height,height,height);
 
 int score = 0;
 
@@ -80,7 +80,7 @@ void drawStatic() {
    float x = random(0,width);
    float y = random(0,height);
    float staticSize = random(staticSizeMin,staticSizeMax);
-   fill(staticColor);
+   fill(#56F03F);
    rect(x,y,staticSize,staticSize);
   }
 }
@@ -110,7 +110,7 @@ void drawPaddle() {
 void drawBall() {
   rectMode(CENTER);
   noStroke();
-  fill(ballColor);
+  fill(ballColor);  
   ellipse(ballX, ballY, ballSize, ballSize); //CHANGED the ball shape from rect to ellipse
 }
 
