@@ -1,11 +1,11 @@
 class Square {
-  
+// I know that they are circles not squares, at first they were but i changed it and didnt know how to change the name of the tab  
   
   float xpos;
   float ypos;
   
   Square() {
-    xpos = width/2;
+    xpos = width/5;
     ypos = height/2;
   }
   
@@ -16,7 +16,7 @@ class Square {
     colorMode(RGB, (i+1) * xpos * 10);
     fill(millis()%((i+1) * xpos * 10));
    rectMode(CENTER);
-   rect(i*xpos, ypos, 320, 240);
+   ellipse(i*xpos, ypos, 50, 50);
  }
 }
 

@@ -66,6 +66,10 @@ class Bouncer {
  void draw() {
    noStroke();
    fill(fillColor);
+   if (mousePressed) {
+   rect(x,y,size,size);
+   } else {
    ellipse(x,y,size,size);
+ }
  }
 }
