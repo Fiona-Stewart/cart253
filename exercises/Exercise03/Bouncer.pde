@@ -2,16 +2,16 @@
 // class that initially "invents" the bouncer
 class Bouncer {
 // size, colour, location, and other calls  
- int x;
- int y;
- int vx;
- int vy;
- int size;
+ float x;
+ float y;
+ float vx;
+ float vy;
+ float size;
  color fillColor;
  color defaultColor;
  color hoverColor;
  // the input of these locations and such above put into the bouncer
- Bouncer(int tempX, int tempY, int tempVX, int tempVY, int tempSize, color tempDefaultColor, color tempHoverColor) {
+ Bouncer(float tempX, float tempY, float tempVX, float tempVY, float tempSize, color tempDefaultColor, color tempHoverColor) {
   
    // re named the inital int variables
    x = tempX;
@@ -30,6 +30,8 @@ class Bouncer {
    
    handleBounce();
    handleMouse();
+
+ 
  }
  // a loop. makes it to so the ball wont go off the screen and instead bounce off and change directions
  void handleBounce() {
@@ -46,11 +48,16 @@ class Bouncer {
    x = constrain(x,size/2,width-size/2);
    y = constrain(y,size/2,height-size/2);
  }
+ 
  // when the mouse passes over the bouncer the colour gets brighter. an if statement
  void handleMouse() {
    if (dist(mouseX,mouseY,x,y) < size/2) {
     fillColor = hoverColor; 
+    
+    size += 1; //CHANGED ball grows in size when mouse is over it
+    size = constrain(size, 5, 350);
    }
+   
    else {
      fillColor = defaultColor;
    }
