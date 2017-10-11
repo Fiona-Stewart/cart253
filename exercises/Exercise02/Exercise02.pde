@@ -29,7 +29,7 @@ int ballVX;
 int ballVY;
 int ballSpeed = 4; //CHANGED decreased speed
 int ballSize = 80;
-color ballColor = color(HSB,height,height,height);
+color ballColor = color(0,0,255);
 
 int score = 0;
 
