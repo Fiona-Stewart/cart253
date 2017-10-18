@@ -1,6 +1,5 @@
 class Square {
-// I know that they are circles not squares, at first they were but i changed it and didnt know how to change the name of the tab  
-  
+
   float xpos;
   float ypos;
   
@@ -11,7 +10,7 @@ class Square {
   
   void draw() {
   noStroke();
-  //ADDED found an interesting code in the processing examples tab that gave an interesting gradient 
+  //ADDED found an interesting code in the processing examples tab that gave a gradient effect
     for (int i = 0; i < xpos; i++) {
     colorMode(RGB, (i+1) * xpos * 10);
     fill(millis()%((i+1) * xpos * 10));

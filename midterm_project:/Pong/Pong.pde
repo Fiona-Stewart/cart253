@@ -10,10 +10,13 @@
 // Only two paddles. (So far!)
 
 // Global variables for the paddles and the ball
+
 Paddle leftPaddle;
 Paddle rightPaddle;
 Ball ball;
 Square square;
+Text text;
+
 // The distance from the edge of the window a paddle should be
 int PADDLE_INSET = 8;
 
@@ -43,6 +46,7 @@ void setup() {
   balls[0] = new Ball (width/2, height/2);
   } 
     square = new Square();
+    text = new Text();
 }
 
 // draw()
@@ -53,6 +57,8 @@ void setup() {
 void draw() {
   // Fill the background each frame so we have animation
   square.draw();
+  
+  text.draw();
   
   // Update the paddles and ball by calling their update methods
   leftPaddle.update();

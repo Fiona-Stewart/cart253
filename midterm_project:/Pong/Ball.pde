@@ -10,7 +10,8 @@ class Ball {
   // Default values for speed and size
   int SPEED = 5;
   int SIZE = 20;
-
+  int ballSizeMin = 20;
+  int ballSizeMax = 50;
   // The location of the ball
   int x;
   int y;
@@ -21,7 +22,7 @@ class Ball {
 
   // The colour of the ball
   color ballColor = color(255);
-
+   
 
   /////////////// Constructor ///////////////
 
@@ -55,7 +56,7 @@ class Ball {
     x += vx;
     y += vy;
 
-    // Check if the ball is going off the top of bottom
+    // Check if the ball is going off the top or bottom
     if (y - SIZE/2 < 0 || y + SIZE/2 > height) {
       // If it is, then make it "bounce" by reversing its velocity
       vy = -vy;
@@ -82,6 +83,7 @@ class Ball {
   
   boolean isOffScreen() {
     return (x + SIZE/2 < 0 || x - SIZE/2 > width);
+
   }
 
   // collide(Paddle paddle)
@@ -117,7 +119,9 @@ class Ball {
   // Draw the ball at its position
 
   void display() {
+   
     // Set up the appearance of the ball (no stroke, a fill, and rectMode as CENTER)
+    for (int i = 0; i < x; i++) {
     noStroke();
     fill(ballColor);
     rectMode(CENTER);
@@ -125,4 +129,6 @@ class Ball {
     // Draw the ball
     ellipse(x, y, SIZE, SIZE);
   }
+}
+
 }
