@@ -43,10 +43,10 @@ void setup() {
 
   // Create the ball at the centre of the screen
   for (int i = 0; i < balls.length; i++) {
-  balls[0] = new Ball (width/2, height/2);
+    balls[0] = new Ball (width/2, height/2);
   } 
-    square = new Square();
-    text = new Text();
+  square = new Square();
+  text = new Text();
 }
 
 // draw()
@@ -57,32 +57,33 @@ void setup() {
 void draw() {
   // Fill the background each frame so we have animation
   square.draw();
-  
+
   text.draw();
-  
+
   // Update the paddles and ball by calling their update methods
   leftPaddle.update();
   rightPaddle.update();
- 
 
 
- 
+
+
   // Display the paddles and the ball
   leftPaddle.display();
   rightPaddle.display();
-  
-  
- for (int i = 0; i < balls.length; i++) {
+
+
+  for (int i = 0; i < balls.length; i++) {
     balls[i].update();
     balls[i].collide(leftPaddle);
     balls[i].collide(rightPaddle);
     balls[i].display();
-     // Check if the ball has gone off the screen
-  if (balls[i].isOffScreen()) {
-    // If it has, reset the ball
-    balls[i].reset();
-}
-}
+    // Check if the ball has gone off the screen
+    if (balls[i].isOffScreen()) {
+      // If it has, reset the ball
+      balls[i].reset();
+    }
+    text(rightPaddle.score, 10, 100);
+  }
 }
 
 // keyPressed()
@@ -110,6 +111,6 @@ void keyReleased() {
 void mousePressed() {
   // A new ball object
   Ball b = new Ball(mouseX, mouseY);
-     // Append to array
-     balls = (Ball[]) append(balls, b);
-   }
+  // Append to array
+  balls = (Ball[]) append(balls, b);
+}

@@ -111,6 +111,7 @@ class Ball {
       }
       // And make it bounce
       vx = -vx;
+      paddle.score = paddle.score + 1;
     }
   }
 
