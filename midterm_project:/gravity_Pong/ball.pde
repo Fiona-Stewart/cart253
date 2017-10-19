@@ -1,5 +1,5 @@
 class Ball {
-  int SIZE = 16;
+  int SIZE = 25;
   float x;
   float y;
   //float speed;
@@ -32,7 +32,6 @@ class Ball {
 
   boolean isOffScreen() {
     return (x - SIZE/2 < 0 || x + SIZE/2 > width);
-    
   }      
 
   void collide(Paddle paddle) {
@@ -46,22 +45,25 @@ class Ball {
       x = paddle.x - paddle.WIDTH/2 - SIZE/2;
       x = paddle.x - paddle.WIDTH/2 - SIZE/2;
       vx = -vx * 0.95;
+
       paddle.score = paddle.score + 1;
     }
- if (isOffScreen()) {
-    x = width/2;
-    y = height/2;
     vx = -vx * 0.95;
-   paddle.ballsKilled = paddle.ballsKilled + 1;
- }
-}
-void display() {
-  // Display the circle
-  for (int i = 0; i < x; i++) {
-    fill(255);
-    noStroke();
-    colorMode(RGB);
-    ellipse(x, y, w, w);
+
+    if (isOffScreen()) {
+      y = (int) random(height);
+      x = width/2;
+      vx = -vx * 0.95;
+      paddle.ballsKilled = paddle.ballsKilled + 1;
+    }
   }
-}
+  void display() {
+    // Display the circle
+    for (int i = 0; i < x; i++) {
+      fill(random(255), random(255), random(255));
+      stroke(1);
+      colorMode(HSB);
+      ellipse(x, y, w, w);
+    }
+  }
 }
