@@ -97,7 +97,7 @@ class Griddie {
     // QUESTION: What does this fill line do?
     // makes the colour a stronger red when it gains energy
     fill(fill, energy); 
-    noStroke();
+    stroke(255);
     rect(x, y, size, size);
   }
 }

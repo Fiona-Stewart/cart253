@@ -12,7 +12,7 @@ int[] ypos = new int[80];
 
 int gridSize = 20;
 // An array storing all the griddies
-Griddie[] griddies = new Griddie[10];
+Griddie[] griddies = new Griddie[1];
 
 // setup()
 //
@@ -41,7 +41,7 @@ void setup() {
 // Update all the griddies, check for collisions between them, display them.
 
 void draw() {
-  background(50);
+  background(#4D5050);
 
   // We need to loop through all the griddies one by one
   for (int i = 0; i < griddies.length; i++) {
