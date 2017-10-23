@@ -48,7 +48,6 @@ class Ball {
 
       paddle.score = paddle.score + 1;
     }
-    vx = -vx * 0.95;
 
     if (isOffScreen()) {
       y = (int) random(height);
