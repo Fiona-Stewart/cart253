@@ -12,7 +12,7 @@ int[] ypos = new int[80];
 
 int gridSize = 20;
 // An array storing all the griddies
-Griddie[] griddies = new Griddie[100];
+Griddie[] griddies = new Griddie[10];
 
 // setup()
 //
@@ -31,10 +31,10 @@ void setup() {
   }
 
 
-for (int i = 0; i < xpos.length; i++) {
-  xpos[i] = 0;
-  ypos[i] = 0;
-}
+  for (int i = 0; i < xpos.length; i++) {
+    xpos[i] = 0;
+    ypos[i] = 0;
+  }
 }
 // draw()
 //
@@ -52,8 +52,10 @@ void draw() {
     // Now go through all the griddies a second time...
     for (int j = 0; j < griddies.length; j++) {
       // QUESTION: What is this if-statement for?
+      // the letter j is equal to the meaning/importance of i
       if (j != i) {
         // QUESTION: What does this line check?
+        // checks if the griddies collide
         griddies[i].collide(griddies[j]);
       }
     }
@@ -62,21 +64,27 @@ void draw() {
     griddies[i].display();
   }
 
-for (int i = 0; i < xpos.length - 1; i++) {
-  xpos[i] = xpos[i + 1];
-  ypos[i] = ypos[i + 1];
-}
-// New location
-xpos[xpos.length - 1] = mouseX;
-ypos[ypos.length - 1] = mouseY;
-// Draw everything
-for (int i = 0; i < xpos.length; i++) {
-  noStroke();
-  fill(255 - i*3.5);
-  ellipse(xpos[i], ypos[i], i, i);
+  for (int i = 0; i < xpos.length - 1; i++) {
+    xpos[i] = xpos[i + 1];
+    ypos[i] = ypos[i + 1];
+  }
+  // New location
+  xpos[xpos.length - 1] = mouseX;
+  ypos[ypos.length - 1] = mouseY;
+  // Draw everything
+  for (int i = 0; i < xpos.length; i++) {
+    noStroke();
+    fill(255 - i*3.5);
+    ellipse(xpos[i], ypos[i], i, i);
 
-  fill(mouseX, 0, mouseY);
-  ellipse(mouseX-19, mouseY-5, 16, 32);
-  ellipse(mouseX+19, mouseY-5, 16, 32);
+    fill(mouseX, 0, mouseY);
+    ellipse(mouseX-19, mouseY-5, 16, 32);
+    ellipse(mouseX+19, mouseY-5, 16, 32);
+  }
 }
+void mousePressed() {
+  // A new ball object
+  Griddie b = new Griddie(mouseX, mouseY, 20);
+  // Append to array
+  griddies = (Griddie[]) append(griddies, b);
 }

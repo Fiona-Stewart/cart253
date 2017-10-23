@@ -16,7 +16,7 @@ class Griddie {
   int y;
   int size;
   int energy;
-  color fill = color(255,0,0);
+  color fill = color(random(255), random(255), random(255));
 
   // Griddie(tempX, tempY, tempSize)
   //
@@ -80,8 +80,8 @@ class Griddie {
       return;
     }
     
-    // QUESTION: What does this if-statement check? checks to see if the griddies interat and if so
-    // it gives them the energy from eachother
+    // QUESTION: What does this if-statement check? checks to see if the griddies interact and if so
+    // it gives them the energy from eachother. also contrains the griddie
     if (x == other.x && y == other.y) {
       // Increase this Griddie's energy
       energy += collideEnergy;
