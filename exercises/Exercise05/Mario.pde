@@ -21,7 +21,6 @@ class Mario {
     xoff += xincrement;
     imageMode(CENTER);
     image(loadImage("mario.gif"), n, y, 50, 70);
-    //image(loadImage("luigi.png"), n, y2, 50, 70);
     ty += 0.100;
   }
 }

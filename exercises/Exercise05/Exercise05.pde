@@ -2,7 +2,7 @@
 Ball ball;
 Mario mario;
 Luigi luigi;
-//ArrayList<Mario> marios = new ArrayList<Mario>();
+ArrayList<Mario> marios = new ArrayList<Mario>();
 
 void setup() {
   size(650, 650);
