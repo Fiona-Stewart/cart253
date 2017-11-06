@@ -9,11 +9,10 @@ class Ball {
   float time = 0.0;
   float increment = 0.01;
   float theta = 0;
-  float vx;
-  float vy;
   color fillColor;
   color defaultColor;
   PImage img;
+  PImage img2;
 
 
   Ball(float tempX, float tempY, float tempN, color tempDefaultColor) {
