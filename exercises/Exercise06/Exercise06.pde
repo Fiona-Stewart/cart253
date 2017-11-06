@@ -1,3 +1,5 @@
+import processing.video.*;
+
 // Exercise 06
 //
 // Using the webcam as input to play with Bouncers.
