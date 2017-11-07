@@ -10,6 +10,9 @@ import processing.video.*;
 // The capture object for reading from the webcam
 Capture video;
 
+float x;
+float y;
+
 // A PVector allows us to store an x and y location in a single object
 // When we create it we give it the starting x and y (which I'm setting to -1, -1
 // as a default value)
@@ -24,7 +27,7 @@ Bouncer[] bouncers = new Bouncer[10];
 
 void setup() {
   size(640, 480);
-
+ 
   // Our old friend the for-loop used to go through the length of an
   // array adding new objects to it (Bouncers in this case)
   for (int i = 0; i < bouncers.length; i++) {
@@ -32,6 +35,8 @@ void setup() {
     bouncers[i] = new Bouncer(random(0, width), random(0, height), random(-10, 10), random(-10, 10), random(20, 50), color(random(255)));
   }
 
+  x = width/2;
+  y = height/2;
   // Start up the webcam
   video = new Capture(this, 640, 480, 30);
   video.start();
@@ -44,11 +49,25 @@ void setup() {
 // do something much more interesting in order to actually interact with the Bouncers.
 
 void draw() {
+   background(255);
   // A function that processes the current frame of video
   handleVideoInput();
 
   // Draw the video frame to the screen
   image(video, 0, 0);
+
+  float newx = constrain(x + random(-20, 20), 0, width);
+  float newy = constrain(y + random(-20, 20), 0, height);
+  stroke(0);
+  strokeWeight(4);
+  //(x, y, newx, newy);
+  x = newx;
+  y = newy; 
+  tint(mouseX, mouseY, 255);
+  //translate(width/2, height/2);
+  //imageMode(CENTER);
+  //rotate(PI/4);
+  image(video, x, y, newx, newy);
 
   // Our old friend the for-loop running through the length of an array to
   // update and display objects, in this case Bouncers.
