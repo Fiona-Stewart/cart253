@@ -77,6 +77,6 @@ class Bouncer {
   void display() {
     noStroke();
     fill(fillColor);
-    ellipse(x, y, size, size);
+    image(video,x, y, size, size);
   }
 }
