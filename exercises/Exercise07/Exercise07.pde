@@ -6,14 +6,14 @@ void setup() {
 void draw() {
   background(loadImage("DrumAngle.jpg"));
 
-  rotate(LEFT);
-  {
-    ellipse( 1, 130, 145, 100);
-  }
-  ellipse( 150, 210, 145, 110);
-  {
-  }
-  
-  ellipse( 220, 350, 145, 110);{
-  }
+
+
+
+  ellipse( 75, 100, 50, 50);
+
+  ellipse( 250, 60, 50, 50);
+
+  ellipse( 410, 125, 50, 50);
+
+  ellipse( 470, 300, 50, 50);
 }
