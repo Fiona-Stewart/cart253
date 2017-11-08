@@ -27,7 +27,7 @@ Bouncer[] bouncers = new Bouncer[10];
 
 void setup() {
   size(640, 480);
- 
+
   // Our old friend the for-loop used to go through the length of an
   // array adding new objects to it (Bouncers in this case)
   for (int i = 0; i < bouncers.length; i++) {
@@ -49,7 +49,7 @@ void setup() {
 // do something much more interesting in order to actually interact with the Bouncers.
 
 void draw() {
-   background(255);
+  background(255);
   // A function that processes the current frame of video
   handleVideoInput();
 
@@ -63,7 +63,7 @@ void draw() {
   //(x, y, newx, newy);
   x = newx;
   y = newy; 
-  tint(mouseX, mouseY, 255);
+  tint(brightestPixel.x, brightestPixel.y, 255);
   //translate(width/2, height/2);
   //imageMode(CENTER);
   //rotate(PI/4);
