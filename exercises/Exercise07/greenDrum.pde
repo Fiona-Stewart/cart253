@@ -4,11 +4,15 @@ class greenDrum {
   float x;
   float y;
   float r;
+  float vx;
+  float vy;
   // Create the doorbell
-  greenDrum(float x_, float y_, float r_) {
+  greenDrum(float x_, float y_,float vx_, float vy_, float r_) {
     x = x_;
     y = y_;
     r = r_;
+    vx = vx_;
+    vy = vy_;
   }
   // Is a point inside the doorbell? (used for mouse rollover, etc.)
   boolean contains(float mx, float my) {
@@ -21,7 +25,7 @@ class greenDrum {
   // Show the doorbell (hardcoded colors, could be improved)
   void display(float mx, float my) {
     if (contains(mx, my)) {
-      fill(100);
+      fill(#20E021);
     } else {
       fill(175);
     }
