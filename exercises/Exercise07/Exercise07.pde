@@ -51,13 +51,4 @@ void mousePressed() {
   if (greenDrum.contains(mouseX, mouseY)) {
     dingdong4.play();
   }
-
-
-  // float volume = map(mouseX, 0, width, 0, 1);
-  // song.amp(volume);
-
-  //float speed = map(mouseY, 0, height, 0, 2)
-  // song.rate(speed);
 }
-
-void keyPressed() {

@@ -22,7 +22,7 @@ class blueDrum {
       return false;
     }
   }
-  
+
   // Show the doorbell (hardcoded colors, could be improved)
   void display(float mx, float my) {
     if (contains(mx, my)) {

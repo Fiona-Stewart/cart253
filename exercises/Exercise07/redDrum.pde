@@ -1,10 +1,10 @@
 
 //import processing.sound.*;
 //SoundFile drumming;
-  //drumming = new SoundFile(this, "Bass drum sound effect.mp3");
-  //red = new Red(width/2, height/2, 64);
+//drumming = new SoundFile(this, "Bass drum sound effect.mp3");
+//red = new Red(width/2, height/2, 64);
 
- class redDrum {
+class redDrum {
   // Location and size
   float x;
   float y;
@@ -12,7 +12,7 @@
   float vx;
   float vy;
   // Create the doorbell
-  redDrum(float x_, float y_,float vx_, float vy_, float r_) {
+  redDrum(float x_, float y_, float vx_, float vy_, float r_) {
     x = x_;
     y = y_;
     r = r_;
@@ -40,6 +40,5 @@
   }
 }
 
- 
+
 // ellipse( 75, 100, 50, 50);
-    

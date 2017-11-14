@@ -7,7 +7,7 @@ class yellowDrum {
   float vx;
   float vy;
   // Create the doorbell
-  yellowDrum(float x_, float y_,float vx_, float vy_, float r_) {
+  yellowDrum(float x_, float y_, float vx_, float vy_, float r_) {
     x = x_;
     y = y_;
     r = r_;
