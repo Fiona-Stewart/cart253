@@ -1,13 +1,16 @@
 class Gun {
   float x;
   float y;
+  float xDelta;
+  float yDelta;
   float radius = 70;
+  int SPEED = 5;
 
   // extended gun component
   float gunPointX;
   float gunPointY;
 
-//reffers to the mouse, aka the target you hover over that you wish to shoot at
+  //reffers to the mouse, aka the target you hover over that you wish to shoot at
   float targX;
   float targY;
 
@@ -17,16 +20,21 @@ class Gun {
     x = tempX;
     y = tempY;
 
+    xDelta = xDelta;
+    yDelta = yDelta;
+
     targX = x;
     targY = y - 200;
   }
 
+
   void display() {
 
+    // the commands that help to make the gun follow the cursor 
     targX = mouseX;
     targY = mouseY;
 
-//allows for the gun to rotate around the body
+    //allows for the gun to rotate around the body
     float angle = atan2(mouseY - y, mouseX - x);
 
     gunPointX = (radius * cos(angle)) + x;
@@ -45,7 +53,6 @@ class Gun {
     strokeCap(PROJECT);
     line(x, y, gunPointX, gunPointY);
 
-
     //outline
     fill(#E8DE17);
     noStroke();
@@ -55,11 +62,39 @@ class Gun {
     strokeWeight(20);
     strokeCap(PROJECT);
     line(x, y, gunPointX, gunPointY);
-    
+
     // orange part
     stroke(#E37702);
     strokeWeight(10);
     strokeCap(ROUND);
     line(x, y, gunPointX, gunPointY);
+  }
+  
+  void keyPressed() {
+    // Check if the key is our up key
+    if (keyCode == UP) {
+      // If so we want a negative y velocity
+      yDelta = -SPEED;
+    } // Otherwise check if the key is our down key 
+    else if (keyCode == DOWN) {
+      // If so we want a positive y velocity
+      yDelta = SPEED;
+    }
+  }
+
+  // keyReleased()
+  //
+  // Called when keyReleased is called in the main program
+
+  void keyReleased() {
+    // Check if the key is our up key and the paddle is moving up
+    if (keyCode == UP && yDelta < 0) {
+      // If so it should stop
+      yDelta = 0;
+    } // Otherwise check if the key is our down key and paddle is moving down 
+    else if (keyCode == DOWN && yDelta > 0) {
+      // If so it should stop
+      yDelta = 0;
+    }
   }
 }
