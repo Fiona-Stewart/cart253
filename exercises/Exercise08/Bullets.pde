@@ -10,14 +10,14 @@ class Bullet {
 
   int SIZE = 20;
   int SPEED = 5;
-  
-  Bullet ( float tempX, float tempY, float tempVX, float tempVY) {
+
+  Bullet ( float tempX, float tempY ) {
 
     x = tempX;
     y = tempY;
 
-    VX = tempVX;
-    VY = tempVY;
+    //VX = tempVX;
+    //VY = tempVY;
   } 
 
   void update() {
@@ -37,6 +37,7 @@ class Bullet {
 
       // Draw the ball
       ellipse(x, y, SIZE, SIZE);
+      // }
     }
   }
 }
