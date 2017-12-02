@@ -1,12 +1,17 @@
 
 class Gun {
-  
+
   float x;
   float y;
+  // refers to the velocity
   float xDelta;
   float yDelta;
+
   float radius = 70;
-  int SPEED = 5;
+  
+  int HEIGHT = 80;
+  int WIDTH = 80;
+  int SPEED = 3;
 
   // extended gun component
   float gunPointX;
@@ -16,25 +21,52 @@ class Gun {
   float aimX;
   float aimY;
 
+  // characters I am going to use to make the tank move up and down
+  char upKey;
+  char downKey;
+
+  // plan to implement these so the tank can move all directions
+  char leftKey;
+  char rightKey;
+
   color[] colors = {#3AAACF, #6E84D6, #35C0CD, #5EC4CD, #4284D3, #6899D3};
 
-  Gun (float tempX, float tempY) {
+  Gun (float tempX, float tempY, char _upKey, char _downKey, char _leftKey, char _rightKey) {
     x = tempX;
     y = tempY;
-
-    xDelta = xDelta;
-    yDelta = yDelta;
+    xDelta = 0;
+    yDelta = 0;
 
     aimX = x;
     aimY = y - 200;
+
+    upKey = _upKey;
+    downKey = _downKey;
+    leftKey = _leftKey;
+    rightKey = _rightKey;
+  }
+
+  void update() {
+    x += xDelta;
+    y += yDelta;
+
+
+    // creates restraints so the tank stays on the screen
+    x = constrain(x,0 + WIDTH/2, width - WIDTH/2);
+    y = constrain(y,0 + HEIGHT/2, height - HEIGHT/2);
   }
 
 
   void display() {
 
-    // the commands that help to make the gun follow the cursor 
+    // the commands that helps to make the gun follow the cursor 
     aimX = mouseX;
     aimY = mouseY;
+    
+    /* 
+    CREDIT: design of gun inspired by user: Tino Zinyama. Looked at his game
+    to figure out how to make the gun barrel rotate
+    */
 
     //allows for the gun to rotate around the body
     float angle = atan2(mouseY - y, mouseX - x);
@@ -71,4 +103,30 @@ class Gun {
     strokeCap(ROUND);
     line(x, y, gunPointX, gunPointY);
   }
+
+  void keyPressed() {
+
+    if (keyCode == upKey) {
+      yDelta = -SPEED;
+    } else if (keyCode == downKey) {
+      yDelta = SPEED;
+    }
+    if (keyCode == leftKey) {
+      xDelta = -SPEED;
+    } else if ( keyCode == rightKey) {
+      xDelta = SPEED;
+    }
+  }
 }
+
+
+//void keyReleased() {
+//  if (keyCode == upKey && yDelta < 0) {
+//    // If so it should stop
+//    yDelta = 0;
+//  } // Otherwise check if the key is our down key and paddle is moving down 
+//  else if (keyCode == downKey && yDelta > 0) {
+//    // If so it should stop
+//    yDelta = 0;
+//  }
+//}

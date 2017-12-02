@@ -1,7 +1,10 @@
 
 class Bullet {
 
+  PVector center;
+  PVector turrent;
 
+  float angle = 0.0;
   float x;
   float y;
 
@@ -11,33 +14,28 @@ class Bullet {
   int SIZE = 20;
   int SPEED = 5;
 
-  Bullet ( float tempX, float tempY ) {
+  Bullet ( float tempX, float tempY, int tempS) {
 
     x = tempX;
     y = tempY;
-
-    //VX = tempVX;
-    //VY = tempVY;
+    SIZE = tempS;
+    center = new PVector(gun.x, gun.y);
   } 
 
   void update() {
-
-    if (y - SIZE/2 < 0 || y + SIZE/2 > height) {
-
-      VY = -VY;
-    }
+    angle = atan2(mouseY - y, mouseX - x);
   }
 
   void display() {
 
-    for (int i = 0; i < x; i++) {
-      noStroke();
-      fill(#D83434);
-      rectMode(CENTER);
+    pushMatrix();
+    translate(x, y);
+    noStroke();
+    fill(#D83434);
+    rotate(angle);
+    // Draw the ball
+    ellipse(SIZE/4, 0, SIZE/2, SIZE/2);
 
-      // Draw the ball
-      ellipse(x, y, SIZE, SIZE);
-      // }
-    }
+    popMatrix();
   }
 }
