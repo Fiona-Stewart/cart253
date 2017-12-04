@@ -8,7 +8,7 @@ class Gun {
   float yDelta;
 
   float radius = 70;
-  
+
   int HEIGHT = 80;
   int WIDTH = 80;
   int SPEED = 3;
@@ -52,8 +52,8 @@ class Gun {
 
 
     // creates restraints so the tank stays on the screen
-    x = constrain(x,0 + WIDTH/2, width - WIDTH/2);
-    y = constrain(y,0 + HEIGHT/2, height - HEIGHT/2);
+    x = constrain(x, 0 + WIDTH/2, width - WIDTH/2);
+    y = constrain(y, 0 + HEIGHT/2, height - HEIGHT/2);
   }
 
 
@@ -62,11 +62,11 @@ class Gun {
     // the commands that helps to make the gun follow the cursor 
     aimX = mouseX;
     aimY = mouseY;
-    
+
     /* 
-    CREDIT: design of gun inspired by user: Tino Zinyama. Looked at his game
-    to figure out how to make the gun barrel rotate
-    */
+     CREDIT: design of gun inspired by user: Tino Zinyama. Looked at his game
+     to figure out how to make the gun barrel rotate
+     */
 
     //allows for the gun to rotate around the body
     float angle = atan2(mouseY - y, mouseX - x);
@@ -118,6 +118,8 @@ class Gun {
     }
   }
 }
+
+
 
 
 //void keyReleased() {
