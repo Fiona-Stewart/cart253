@@ -6,6 +6,8 @@
 
 Gun gun;
 Bullet bullet;
+Gun whole;
+BulletManager bulletManager;
 void setup() {
   size (1200, 800);
   smooth();
@@ -13,11 +15,13 @@ void setup() {
 
   // gun spawns at a random location within these perameters 
   
-  gun = new Gun(width/2, height/2,'W', 'S', 'A', 'D');
+ // gun = new Gun(width/2, height/2,'W', 'S', 'A', 'D');
   
-  //gun = new Gun(random(600, width-200), random(400, height-200),'W', 'S', 'A', 'D',);
+  whole = new Gun(random(600, width-200), random(400, height-200),'W', 'S', 'A', 'D');
 
-  bullet = new Bullet(width/2, height/2,20);
+  //bullet = new Bullet(width/2, height/2,20);
+  
+  bulletManager = new BulletManager(whole);
 }
 
 void draw() {
