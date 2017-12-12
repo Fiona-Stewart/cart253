@@ -111,8 +111,9 @@ class Gun {
     line(x, y, gunPointX, gunPointY);
   }
   void shoot() {
+  
+    showShoot.addWater();
 
-    //waterManager.addWater();
   }
 
   void keyPressed() {

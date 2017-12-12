@@ -1,12 +1,12 @@
 
 class Water {
 
-  float x = 400;
-  float y = 750;
+  float x;
+  float y;
   float xDelta;
   float yDelta;
 
-  float SPEED = 4;
+  float SPEED = 3;
   float radius = 30;
   int HEIGHT = 80;
   int WIDTH = 80;
@@ -14,9 +14,6 @@ class Water {
   float gunPointX;
   float gunPointY;
 
-  boolean shooting = false; 
-  float a=x, b=y, s=8;
-  float VX_shoot, VY_shoot;
 
   float aimX;
   float aimY;
@@ -26,6 +23,7 @@ class Water {
   char leftKey;
   char rightKey;
 
+  ArrayList<Water> spray = new ArrayList<Water>();
 
   PVector aim = new PVector();
   PVector center;
@@ -39,9 +37,7 @@ class Water {
     aim.x = x;
     aim.y = y;
 
-    //x = tempX;
-    //y = tempY;
-    xDelta = 1;
+    xDelta = 0;
     yDelta = 0;
 
     aimX = x;
@@ -51,19 +47,12 @@ class Water {
     downKey = _downKey;
     leftKey = _leftKey;
     rightKey = _rightKey;
-    
   } 
 
-  void update() {
+  void run() {
     x += xDelta;
     y += yDelta;
 
-    x = constrain(x, 0 + WIDTH/2, width - WIDTH/2);
-    y = constrain(y, 0 + HEIGHT/2, height - HEIGHT/2);
-  }
-
-
-  void run() {
     move();
     display();
   }
@@ -149,37 +138,68 @@ class Water {
       yDelta = 0;
     }
   }
+}
 
-  //  void initShoot() {
-  //    //
-  //  }//func
-  //}
+class ShowShoot {
+  
+  float xDelta;
+  float yDelta;
 
-  class showShoot {
+  float SPEED = 3;
+  
+  char upKey;
+  char downKey;
+  char leftKey;
+  char rightKey;
 
-    char upKey;
-    char downKey;
-    char leftKey;
-    char rightKey;
+  ArrayList<Water> spray = new ArrayList<Water>();
+  PVector aim;
 
-    ArrayList<Water> spray;
-    PVector aim;
+  ShowShoot(Gun gun) {
 
-    showShoot (Gun GU) {
-      spray = new ArrayList<Water>();
-      aim = new PVector (GU.x, GU.y);
+    xDelta = 0;
+    yDelta = 0;
+
+    spray = new ArrayList<Water>();
+    aim = new PVector (gun.x, gun.y);
+  }
+  void addWater() { 
+    spray.add(new Water(aim.x, aim.y, upKey, downKey, leftKey, rightKey));
+  }
+  void run() {
+
+    for (int i = 0; i < spray.size(); i++) {
+      Water b = spray.get(i);
+      b.run();
     }
-    void addWater() { 
-      spray.add(new Water(aim.x, aim.y, upKey, downKey, leftKey, rightKey));
+  }
+  void keyPressed() {
+
+    if (keyCode == upKey) {
+      yDelta = -SPEED;
+      //yDelta = -1;
+      //xDelta =0;
+    } else if (keyCode == downKey) {
+      yDelta = SPEED;
+      //yDelta = 1;
+      //xDelta =0;
     }
-    void run() {
-      for (int i = 0; i < spray.size(); i++) {
-        Water b = spray.get(i);
-        b.run();
-      }
+    if (keyCode == leftKey) {
+      xDelta = -SPEED;
+      //xDelta = -1;
+      //yDelta =0;
+    } else if ( keyCode == rightKey) {
+      xDelta = SPEED;
     }
   }
 }
+//  void initShoot() {
+//    //
+//  }//func
+//}
+
+
+
 //aimX = mouseX;
 //aimY = mouseY;
 //float angle = atan2(mouseY - y, mouseX - x);

@@ -6,7 +6,7 @@
 
 Gun gun;
 Water water;
- //WaterManager waterManager;
+ShowShoot showShoot;
 
 void setup() {
   size (1200, 800);
@@ -16,8 +16,8 @@ void setup() {
   // gun spawns at a random location within these perameters 
 
   gun = new Gun(width/2, height/2, 'W', 'S', 'A', 'D');
-  
-  //waterManager = new WaterManager();
+
+  showShoot = new ShowShoot(gun);
 
   //whole = new Gun(random(600, width-200), random(400, height-200),'W', 'S', 'A', 'D');
 
@@ -26,18 +26,19 @@ void setup() {
 
 void draw() {
   background(255);
-  //waterManager.run();
+
   gun.display();
   gun.update();
 
-  water.update();
+  showShoot.run();
+  //water.update();
   water.display();
   //water.initShoot();
   //water.showShoot();
 }
 
-void mouseReleased(){
-  //player.shoot();
+void mouseReleased() {
+
   //gun.keyPressed();
   //water.keyPressed();
 }
@@ -45,8 +46,11 @@ void mouseReleased(){
 void keyPressed() {
   gun.keyPressed();
   water.keyPressed();
-}
 
+  if (key == ' ') {
+    gun.shoot();
+  }
+}
 void keyReleased() {
   gun.keyReleased();
   water.keyReleased();
