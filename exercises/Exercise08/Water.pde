@@ -28,6 +28,7 @@ class Water {
   PVector aim = new PVector();
   PVector center;
   PVector turrent;
+  boolean isDead;
 
   Water( float x, float y, char _upKey, char _downKey, char _leftKey, char _rightKey) {
 
@@ -55,6 +56,14 @@ class Water {
 
     move();
     display();
+    
+    for (Enemy e : enemy) {
+      if (abs(aim.x - e.loc.x) < radius / 2 + e.size / 2 && abs(aim.y - e.loc.y) < radius / 2 + e.size / 2) {
+        isDead = true;
+        e.isDead = true;
+        break;
+      }
+    }
   }
 
   void display() {
@@ -141,12 +150,12 @@ class Water {
 }
 
 class ShowShoot {
-  
+
   float xDelta;
   float yDelta;
 
   float SPEED = 3;
-  
+
   char upKey;
   char downKey;
   char leftKey;
@@ -172,7 +181,9 @@ class ShowShoot {
       Water b = spray.get(i);
       b.run();
     }
+    
   }
+
   void keyPressed() {
 
     if (keyCode == upKey) {

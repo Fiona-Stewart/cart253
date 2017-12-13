@@ -1,3 +1,4 @@
+
 class Luigi {
   float tx = random(0, 100);
   float ty = random(0, 100);

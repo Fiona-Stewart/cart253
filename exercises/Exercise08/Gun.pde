@@ -55,10 +55,8 @@ class Gun {
   
       x = constrain(x, 0 + WIDTH/2, width - WIDTH/2);
       y = constrain(y, 0 + HEIGHT/2, height - HEIGHT/2);
-    
+      
   }
-
-
   void display() {
 
     if (keyPressed==true)

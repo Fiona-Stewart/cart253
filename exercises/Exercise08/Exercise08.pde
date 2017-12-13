@@ -1,3 +1,5 @@
+import controlP5.*;
+
 /*
    Watergun Bust Down
  By Fiona Stewart
@@ -7,6 +9,8 @@
 Gun gun;
 Water water;
 ShowShoot showShoot;
+Life life;
+ArrayList<Enemy> enemy;
 
 void setup() {
   size (1200, 800);
@@ -22,13 +26,30 @@ void setup() {
   //whole = new Gun(random(600, width-200), random(400, height-200),'W', 'S', 'A', 'D');
 
   water = new Water(width/2, height/2, 'W', 'S', 'A', 'D');
+  
+  life = new Life();
+  
+  enemy = new ArrayList<Enemy>();
 }
 
 void draw() {
   background(255);
+  
+ for(Enemy enemy: enemy){
+    enemy.display();
+  }
+  
 
   gun.display();
+  
   gun.update();
+  ArrayList<Enemy> nextEnemy = new ArrayList<Enemy>();
+  for(Enemy enemy: enemy){
+    enemy.update();
+    if(!enemy.isDead){
+      nextEnemy.add(enemy);
+    }
+  }
 
   showShoot.run();
   //water.update();
@@ -36,6 +57,8 @@ void draw() {
   //water.initShoot();
   //water.showShoot();
 }
+
+
 
 void mouseReleased() {
 
