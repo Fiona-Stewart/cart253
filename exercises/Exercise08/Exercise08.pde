@@ -1,55 +1,67 @@
-import controlP5.*;
+
+//  //if (((x>width-radius) || (x<radius)) || ((y>height-radius) || (y<radius))) exit();
+//  //^^^^^ do nOT DELETE USE FOR ENEMYS 
+
 
 /*
    Watergun Bust Down
  By Fiona Stewart
  */
-
-
+//Enemy enemy;
+Enemy[] enemy = new Enemy[10];
 Gun gun;
 Water water;
 ShowShoot showShoot;
 Life life;
-ArrayList<Enemy> enemy;
+
+int totalEnemy = 0;
 
 void setup() {
   size (1200, 800);
   smooth();
   frameRate(60);
 
-  // gun spawns at a random location within these perameters 
-
   gun = new Gun(width/2, height/2, 'W', 'S', 'A', 'D');
 
   showShoot = new ShowShoot(gun);
 
-  //whole = new Gun(random(600, width-200), random(400, height-200),'W', 'S', 'A', 'D');
+  water = new Water(width/2, height/2);
 
-  water = new Water(width/2, height/2, 'W', 'S', 'A', 'D');
-  
   life = new Life();
-  
-  enemy = new ArrayList<Enemy>();
+
+  for (int i = 0; i < enemy.length; i++) {
+    enemy[i] = new Enemy(random(width),random(height), 2, 2, color(#A01B17), color(#E8332C));
+   }
+
 }
 
 void draw() {
   background(255);
+  life.display();
+  life.update();
   
- for(Enemy enemy: enemy){
-    enemy.display();
+  //enemy.display();
+  //enemy.update();
+  
+  for (int i = 0; i < enemy.length; i++) {
+    enemy[i].display();
+    enemy[i].update();
+    enemy[i].handleBounce();
+    enemy[i].collide(gun);
+    if (showShoot.intersect(enemy[i])) {
+      enemy[i].caught();
+    }
   }
+  if (totalEnemy >= enemy.length) {
+      totalEnemy = 0; // Start over
+    }
+  
   
 
   gun.display();
-  
   gun.update();
-  ArrayList<Enemy> nextEnemy = new ArrayList<Enemy>();
-  for(Enemy enemy: enemy){
-    enemy.update();
-    if(!enemy.isDead){
-      nextEnemy.add(enemy);
-    }
-  }
+
+
 
   showShoot.run();
   //water.update();
@@ -59,24 +71,14 @@ void draw() {
 }
 
 
-
-void mouseReleased() {
-
-  //gun.keyPressed();
-  //water.keyPressed();
-}
-
 void keyPressed() {
+  
   gun.keyPressed();
-  water.keyPressed();
 
   if (key == ' ') {
     gun.shoot();
   }
-}
-void keyReleased() {
-  gun.keyReleased();
-  water.keyReleased();
+  //life.keyPressed();
 }
 
 /*

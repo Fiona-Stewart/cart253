@@ -52,18 +52,17 @@ class Gun {
 
 
     // creates restraints so the tank stays on the screen
-  
-      x = constrain(x, 0 + WIDTH/2, width - WIDTH/2);
-      y = constrain(y, 0 + HEIGHT/2, height - HEIGHT/2);
-      
+
+    x = constrain(x, 0 + WIDTH/2, width - WIDTH/2);
+    y = constrain(y, 0 + HEIGHT/2, height - HEIGHT/2);
   }
   void display() {
 
-    if (keyPressed==true)
-    {
-      x += SPEED*xDelta;
-      y += SPEED*yDelta;
-    }
+    //if (keyPressed==true)
+    //{
+    //  x += SPEED*xDelta;
+    //  y += SPEED*yDelta;
+   // }
     // the commands that helps to make the gun follow the cursor 
     aimX = mouseX;
     aimY = mouseY;
@@ -109,42 +108,38 @@ class Gun {
     line(x, y, gunPointX, gunPointY);
   }
   void shoot() {
-  
+
     showShoot.addWater();
-
+    
+    
   }
-
   void keyPressed() {
 
     if (keyCode == upKey) {
       yDelta = -SPEED;
       //yDelta = -1;
-      //xDelta = 0;
+      //xDelta =0;
     } else if (keyCode == downKey) {
       yDelta = SPEED;
       //yDelta = 1;
-      //xDelta = 0;
+      //xDelta =0;
     }
     if (keyCode == leftKey) {
       xDelta = -SPEED;
       //xDelta = -1;
-      //yDelta = 0;
+      //yDelta =0;
     } else if ( keyCode == rightKey) {
       xDelta = SPEED;
       //xDelta = 1;
       //yDelta = 0;
-    }
-  }
-  void keyReleased() {
-    if (keyCode == leftKey && xDelta < 0) {
-      xDelta = 0;
-    } else if (keyCode == rightKey && xDelta > 0) {
-      xDelta = 0;
-    }
-    if (keyCode == upKey && yDelta < 0) {
-      yDelta = 0;
-    } else if (keyCode == downKey && yDelta > 0) {
-      yDelta = 0;
+      //} else if (key == ' ') {
+      //  a=x; 
+      //  b=y; 
+      //  VX_shoot=xDelta;
+      //  VY_shoot=yDelta; 
+      //  s=4; // speed 
+      //  shooting = true;
+      //}
     }
   }
 }
