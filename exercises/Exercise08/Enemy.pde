@@ -112,7 +112,19 @@ class Enemy {
   void display() {
     noStroke();
     fill(fillColor);
-    ellipse(x, y, size, size);
+    ellipse(x, y, size+4, size+4);
+    
+    noStroke();
+    fill(0);
+    ellipse(x, y, size-15, size-15);
+    
+    noStroke();
+    fill(fillColor);
+    ellipse(x, y, size-30, size-30);
+    
+    noStroke();
+    fill(0);
+    ellipse(x, y, size-50, size-50);
   }
   void caught() {
     speed = 0; // Stop it from moving by setting speed equal to zero

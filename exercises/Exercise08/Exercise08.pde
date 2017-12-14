@@ -6,6 +6,20 @@
 /*
    Watergun Bust Down
  By Fiona Stewart
+ 
+ You, are a watergun. 
+ 
+ Travel around the screen by using the W,S,A,D keys.
+ To shoot water tap or hold spacebar.
+ 
+ Avoid all the targets!
+ they are tired of constantly being dowsed and drowned with water droplets and have now become hostile!!
+ 
+ THEY WILL ATTACK.
+ 
+ If one of them catches you, your health will go down, once it reaches zero its game over!
+  
+ 
  */
 
 Enemy[] enemy;
@@ -13,7 +27,6 @@ Gun gun;
 Water water;
 ShowShoot showShoot;
 Life life;
-Timer timer;
 
 int totalEnemy = 0;
 
@@ -36,8 +49,7 @@ void setup() {
     enemy[i] = new Enemy(random(width), random(height), random(1, 3), random(1, 5), color(#A01B17), color(#E8332C));
   }
 
-  timer = new Timer(300);
-  timer.start();
+
 }
 
 void draw() {
