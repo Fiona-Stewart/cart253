@@ -61,7 +61,7 @@ class Timer {
 
   void draw() {
     fill(0);
-    
+    textSize(15);
     textAlign(CENTER);
     text(nf(timer.hour(), 2)+":"+nf(timer.minute(), 2)+":"+nf(timer.second(), 2), 150, 175);
   }
