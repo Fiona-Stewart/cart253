@@ -5,7 +5,7 @@ class Enemy {
   float vx;
   float vy;
   int size;
-  float speed;
+  int speed;
   color fillColor;
   color defaultColor;
   color hoverColor;
@@ -21,7 +21,7 @@ class Enemy {
     vx = tempVX;
     vy = tempVY;
     
-    speed = random(5, 8);
+    speed = int(random(1, 6 ));
     size = int(random(40, 90));
     isDead = false;
 
@@ -52,7 +52,7 @@ class Enemy {
     x = constrain(x, size/2, width-size/2);
     y = constrain(y, size/2, height-size/2);
   }
-
+// void used from Pong
   void collide(Water water) {
 
     boolean insideLeft = (x + size/2 > water.x - water.WIDTH/2);
@@ -71,37 +71,11 @@ class Enemy {
       }
       //And make it bounce
       vx = -vx;
+      speed = 0; // Stop it from moving by setting speed equal to zero
+    y = -1000;
       //water.score = paddle.score + 1;
     }
   }
-
-  //boolean insideLeft = (x + size/2 > water.x - water.WIDTH/2);
-  //boolean insideRight = (x - size/2 < water.x + water.WIDTH/2);
-  //boolean insideTop = (y + size/2 > water.y - water.HEIGHT/2);
-  //boolean insideBottom = (y - size/2 < water.y + water.HEIGHT/2);
-
-  //if (insideLeft && insideRight && insideTop && insideBottom) {
-  //  // If it was moving to the left
-  //  if (vx < 0) {
-  //    // Reset its position to align with the right side of the paddle
-  //    x = water.x + water.WIDTH/2 + size/2;
-  //  } else if (vx > 0) {
-  //    // Reset its position to align with the left side of the paddle
-  //    x = water.x - water.WIDTH/2 - size/2;
-  //  }
-  //  // And make it bounce
-  //  vx = -vx;
-  //  //water.score = paddle.score + 1;
-  //}
-
-
-  //for (int i = 0; i < water.WIDTH; i++) {
-  // float distance = dist(b.aim.x, b.aim.y, x, y);
-
-  //isDead = true; 
-  //this.isDead = true;
-  // }
-  //}
 
   void collide(Gun gun) {
 
@@ -134,17 +108,6 @@ class Enemy {
     }
   }
 
-  // when the mouse passes over the bouncer the colour gets brighter. an if statement
-  //void handleMouse() {
-  //  if (dist(mouseX, mouseY, x, y) < size/2) {
-  //    fillColor = hoverColor; 
-
-  //    size += 1; //CHANGED ball grows in size when mouse is over it
-  //    size = constrain(size, 5, 350);
-  //  } else {
-  //    fillColor = defaultColor;
-  //  }
-  //}
 
   void display() {
     noStroke();

@@ -130,16 +130,7 @@ class Gun {
       //yDelta =0;
     } else if ( keyCode == rightKey) {
       xDelta = SPEED;
-      //xDelta = 1;
-      //yDelta = 0;
-      //} else if (key == ' ') {
-      //  a=x; 
-      //  b=y; 
-      //  VX_shoot=xDelta;
-      //  VY_shoot=yDelta; 
-      //  s=4; // speed 
-      //  shooting = true;
-      //}
+      
     }
   }
 }

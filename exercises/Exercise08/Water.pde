@@ -24,7 +24,9 @@ class Water {
   PVector turrent;
   boolean isDead;
 
-  Water(float x, float y) {
+  Water(float tempR, float x, float y) {
+
+    radius = tempR;
 
     center = new PVector(gun.x, gun.y);
     turrent  =  new PVector(gun.gunPointX, gun.gunPointY);
@@ -60,13 +62,6 @@ class Water {
       Water b = spray.get(i);
       b.run();
     }
-    //for (Enemy e : enemy) {
-    //  if (abs(aim.x - e.loc.x) < radius / 2 + e.size / 2 && abs(aim.y - e.loc.y) < radius / 2 + e.size / 2) {
-    //    isDead = true;
-    //    e.isDead = true;
-    //    break;
-    //  }
-    //}
   }
 
   void display() {
@@ -74,14 +69,6 @@ class Water {
     noStroke();
     fill(#46D5FF);
     ellipse (aim.x, aim.y, HEIGHT, WIDTH);
-  }
-  boolean intersect(Enemy d) {
-    float distance = dist(x, y, d.x, d.y);
-    if (distance < radius + d.size) {
-      return true;
-    } else {
-      return false;
-    }
   }
 
 
@@ -115,7 +102,7 @@ class ShowShoot {
     aim = new PVector (gun.x, gun.y);
   }
   void addWater() { 
-    spray.add(new Water(aim.x, aim.y));
+    spray.add(new Water(30, aim.x, aim.y));
   }
   boolean intersect(Enemy d) {
     float distance = dist(x, y, d.x, d.y);

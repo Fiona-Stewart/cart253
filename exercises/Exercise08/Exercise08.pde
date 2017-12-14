@@ -7,12 +7,13 @@
    Watergun Bust Down
  By Fiona Stewart
  */
-//Enemy enemy;
-Enemy[] enemy = new Enemy[10];
+
+Enemy[] enemy;
 Gun gun;
 Water water;
 ShowShoot showShoot;
 Life life;
+Timer timer;
 
 int totalEnemy = 0;
 
@@ -25,24 +26,28 @@ void setup() {
 
   showShoot = new ShowShoot(gun);
 
-  water = new Water(width/2, height/2);
+  water = new Water(30, width/2, height/2);
 
   life = new Life();
 
-  for (int i = 0; i < enemy.length; i++) {
-    enemy[i] = new Enemy(random(width),random(height), 2, 2, color(#A01B17), color(#E8332C));
-   }
+  enemy = new Enemy[16];
 
+  for (int i = 0; i < enemy.length; i++) {
+    enemy[i] = new Enemy(random(width), random(height), random(1, 3), random(1, 5), color(#A01B17), color(#E8332C));
+  }
+
+  timer = new Timer(300);
+  timer.start();
 }
 
 void draw() {
   background(255);
   life.display();
   life.update();
-  
+
   //enemy.display();
   //enemy.update();
-  
+
   for (int i = 0; i < enemy.length; i++) {
     enemy[i].display();
     enemy[i].update();
@@ -53,26 +58,21 @@ void draw() {
     }
   }
   if (totalEnemy >= enemy.length) {
-      totalEnemy = 0; // Start over
-    }
-  
-  
+    totalEnemy = 0; // Start over
+  }
 
   gun.display();
   gun.update();
 
 
-
   showShoot.run();
-  //water.update();
-  water.display();
-  //water.initShoot();
-  //water.showShoot();
+  
+  ;
 }
 
 
 void keyPressed() {
-  
+
   gun.keyPressed();
 
   if (key == ' ') {
