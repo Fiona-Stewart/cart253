@@ -27,7 +27,7 @@ Gun gun;
 Water water;
 ShowShoot showShoot;
 Life life;
-
+Timer timer;
 int totalEnemy = 0;
 
 void setup() {
@@ -35,6 +35,9 @@ void setup() {
   smooth();
   frameRate(60);
   
+  println (millis());
+  timer = new Timer();
+  timer.start();
 
   gun = new Gun(width/2, height/2, 'W', 'S', 'A', 'D');
 
@@ -54,9 +57,10 @@ void setup() {
 
 void draw() {
   background(255);
+  timer.draw();
   life.display();
   life.update();
-
+  
   //enemy.display();
   //enemy.update();
 
